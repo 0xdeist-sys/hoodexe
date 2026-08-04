@@ -1,0 +1,49 @@
+const boot = document.getElementById("boot");
+window.addEventListener("load", () => {
+  setTimeout(() => boot.classList.add("hidden"), 1650);
+});
+
+const menuButton = document.getElementById("menuButton");
+const nav = document.getElementById("nav");
+menuButton.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(open));
+});
+nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => nav.classList.remove("open")));
+
+const ghosts = [
+  ["assets/hoodexe-01.png", "HOODEXE #5"],
+  ["assets/hoodexe-02.png", "HOODEXE #16"],
+  ["assets/hoodexe-03.png", "HOODEXE #27"],
+  ["assets/hoodexe-04.png", "HOODEXE #34"],
+  ["assets/hoodexe-05.png", "HOODEXE #187"],
+  ["assets/hoodexe-06.png", "HOODEXE #220"],
+  ["assets/hoodexe-07.png", "HOODEXE #314"],
+  ["assets/hoodexe-08.png", "HOODEXE #327"],
+  ["assets/hoodexe-09.png", "HOODEXE #449"],
+  ["assets/hoodexe-10.png", "HOODEXE #464"]
+];
+
+const heroGhost = document.getElementById("heroGhost");
+const heroId = document.getElementById("heroId");
+const discoverButton = document.getElementById("discoverButton");
+let current = 0;
+
+function showGhost(index) {
+  heroGhost.classList.add("swap");
+  setTimeout(() => {
+    current = index;
+    heroGhost.src = ghosts[current][0];
+    heroGhost.alt = ghosts[current][1];
+    heroId.textContent = ghosts[current][1];
+    heroGhost.classList.remove("swap");
+  }, 170);
+}
+
+discoverButton.addEventListener("click", () => {
+  let next = current;
+  while (next === current) next = Math.floor(Math.random() * ghosts.length);
+  showGhost(next);
+});
+
+setInterval(() => showGhost((current + 1) % ghosts.length), 4300);
