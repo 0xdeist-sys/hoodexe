@@ -8,3 +8,18 @@ Claim start: Aug 10 2026 17:00 Turkey
 
 The site shows a live 24-hour claim countdown.
 The final Reward Engine contract must also enforce the same claimStartTime on-chain.
+
+
+VAULT BALANCE FIX:
+The site now reads the Reward Vault balance from Robinhood Chain Blockscout first.
+If that is unavailable it falls back to the official public Robinhood Chain RPC,
+then to the connected wallet provider. This avoids relying on one rate-limited endpoint.
+
+
+ESTIMATED REWARD:
+- Connect Wallet reads real STONEFOLK balance.
+- Reads live totalSupply() from the STONEFOLK contract.
+- Reads live Reward Vault ETH balance.
+- During the launch window, estimated reward = Vault Balance × wallet STONEFOLK / current minted supply.
+- This is appropriate while all launch NFTs remain at base Holding Power 1.0.
+- The deployed Reward Engine will later become the source of truth for time-based Power and final claims.
