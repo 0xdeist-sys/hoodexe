@@ -30,3 +30,11 @@ WALLET CONNECTION FIX:
 - Switches/adds Robinhood Chain only after the wallet is connected.
 - Uses official mainnet settings: chain ID 4663 (0x1237), official public RPC, Blockscout explorer.
 - Shows clearer MetaMask errors for cancelled/pending requests.
+
+
+READ-ONLY WALLET VIEW FIX:
+- Connecting no longer forces MetaMask to switch to Robinhood Chain.
+- The connected wallet address is read immediately.
+- STONEFOLK balance and current collection supply are read from Robinhood Chain Blockscout.
+- Reward Vault balance is also read from Blockscout.
+- Robinhood Chain switching is reserved for the future CLAIM transaction only.
