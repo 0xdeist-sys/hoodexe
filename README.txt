@@ -8,3 +8,4 @@ Claim start: Aug 10 2026 17:00 Turkey
 
 The site shows a live 24-hour claim countdown.
 The final Reward Engine contract must also enforce the same claimStartTime on-chain.
+ 
