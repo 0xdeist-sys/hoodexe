@@ -23,3 +23,10 @@ ESTIMATED REWARD:
 - During the launch window, estimated reward = Vault Balance × wallet STONEFOLK / current minted supply.
 - This is appropriate while all launch NFTs remain at base Holding Power 1.0.
 - The deployed Reward Engine will later become the source of truth for time-based Power and final claims.
+
+
+WALLET CONNECTION FIX:
+- Requests wallet account permission first.
+- Switches/adds Robinhood Chain only after the wallet is connected.
+- Uses official mainnet settings: chain ID 4663 (0x1237), official public RPC, Blockscout explorer.
+- Shows clearer MetaMask errors for cancelled/pending requests.
