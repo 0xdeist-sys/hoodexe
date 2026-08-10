@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MooFarm — MooPunks</title>
+  <meta name="theme-color" content="#0f2b18">
+  <link rel="stylesheet" href="./styles.css?v=3">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar panel">
+      <div class="brand">
+        <div class="brand-cow">🐮</div>
+        <div>
+          <div class="brand-title">MOOFARM</div>
+          <div class="brand-sub">YOUR COWS. YOUR FARM. YOUR MILK.</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-btn active" data-view="farm">FARM</button>
+        <button class="nav-btn" data-view="cows">MY COWS</button>
+        <button class="nav-btn" data-view="shop">SHOP</button>
+        <button class="nav-btn" data-view="treasury">TREASURY</button>
+        <button class="nav-btn" data-view="leaderboard">LEADERBOARD</button>
+      </nav>
+      <button id="walletBtn" class="wallet-btn">CONNECT WALLET</button>
+    </header>
+
+    <section class="stats-grid">
+      <article class="panel stat"><span>🐮 COWS</span><strong id="cowCount">13</strong><small>ON YOUR FARM</small></article>
+      <article class="panel stat"><span>🥛 MILK</span><strong id="milkBalance">1,240</strong><small>YOUR BALANCE</small></article>
+      <article class="panel stat"><span>💰 TREASURY</span><strong class="cyan">0.184 ETH</strong><small>DEMO POOL</small></article>
+      <article class="panel stat"><span>⭐ FARM LVL</span><strong>3</strong><small>650 / 1000 XP</small></article>
+    </section>
+
+    <main>
+      <section id="farm" class="view active-view">
+        <div class="farm-layout">
+          <div class="farm panel" id="farmStage">
+            <div class="sky"></div>
+            <div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="sun"></div>
+            <div class="hills hills-a"></div><div class="hills hills-b"></div>
+            <div class="field"></div>
+            <div class="dirt-path"></div>
+            <div class="barn"><div class="barn-roof"></div><div class="barn-body"><div class="barn-window"></div><div class="barn-door"></div></div></div>
+            <div class="silo"></div>
+            <div class="tree"><div class="tree-crown c1"></div><div class="tree-crown c2"></div><div class="tree-crown c3"></div><div class="tree-trunk"></div></div>
+            <div class="pond"></div>
+            <div class="crop-patch"></div>
+            <div class="fence fence-top"></div><div class="fence fence-bottom"></div>
+            <div class="wood-sign">WELCOME<br><b>FARMER</b></div>
+            <div id="cowLayer"></div>
+            <div id="milkBurst" class="milk-burst">+130 MILK</div>
+          </div>
+
+          <aside class="side-column">
+            <article class="panel milk-card">
+              <h2>MILK BARN</h2>
+              <div class="milk-jar">🥛</div>
+              <div class="claim-value"><span id="claimable">130</span> MILK</div>
+              <div class="muted">READY TO COLLECT</div>
+              <button id="collectBtn" class="action-btn yellow">COLLECT MILK</button>
+            </article>
+            <article class="panel production-card">
+              <h2>PRODUCTION</h2>
+              <div class="row"><span>PER COW</span><b>10 MILK / DAY</b></div>
+              <div class="row"><span>YOUR FARM</span><b id="farmRate">130 MILK / DAY</b></div>
+              <div class="progress"><i id="progressBar"></i></div>
+              <div id="timer" class="muted">NEXT MILK TICK IN 00:42</div>
+            </article>
+            <article class="panel news-card">
+              <h2>MOO NEWS</h2>
+              <p>Grow your farm, collect MILK and share the Moo Treasury.</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="cows" class="view">
+        <div class="section-heading"><h1>MY COWS</h1><p>Your demo MooPunks currently living on the farm.</p></div>
+        <div id="cowCards" class="cow-grid"></div>
+      </section>
+
+      <section id="shop" class="view">
+        <div class="section-heading"><h1>FARM SHOP</h1><p>Spend MILK on cosmetic farm upgrades.</p></div>
+        <div class="shop-grid">
+          <article class="panel shop-card"><div class="shop-icon">🪵</div><h3>WOOD FENCE</h3><p>Upgrade your fences.</p><button class="shop-buy" data-cost="500">500 MILK</button></article>
+          <article class="panel shop-card"><div class="shop-icon">🌳</div><h3>BIG TREE</h3><p>Add a giant tree.</p><button class="shop-buy" data-cost="1000">1,000 MILK</button></article>
+          <article class="panel shop-card"><div class="shop-icon">🚜</div><h3>PIXEL TRACTOR</h3><p>Park a tractor on your farm.</p><button class="shop-buy" data-cost="2500">2,500 MILK</button></article>
+          <article class="panel shop-card"><div class="shop-icon">🏚️</div><h3>GOLDEN BARN</h3><p>Premium barn skin.</p><button class="shop-buy" data-cost="5000">5,000 MILK</button></article>
+        </div>
+      </section>
+
+      <section id="treasury" class="view">
+        <div class="section-heading"><h1>MOO TREASURY</h1><p>MILK has no fixed ETH rate. Rewards depend on the real ETH pool.</p></div>
+        <div class="treasury-grid">
+          <article class="panel vault"><div class="vault-icon">💰</div><strong>0.184 ETH</strong><small>CURRENT DEMO TREASURY</small></article>
+          <article class="panel info-card"><span>NEXT DISTRIBUTION</span><b>SUNDAY</b></article>
+          <article class="panel info-card"><span>YOUR MOO SHARE</span><b>13 COWS</b></article>
+          <article class="panel info-card"><span>REWARD MODE</span><b>VARIABLE POOL</b></article>
+        </div>
+      </section>
+
+      <section id="leaderboard" class="view">
+        <div class="section-heading"><h1>TOP FARMERS</h1><p>Demo leaderboard.</p></div>
+        <div class="panel leaderboard">
+          <div><span>🥇</span><b>0xBEEF...C0W</b><em>82 COWS</em></div>
+          <div><span>🥈</span><b>0xFARM...777</b><em>67 COWS</em></div>
+          <div><span>🥉</span><b>0xMILK...123</b><em>51 COWS</em></div>
+          <div><span>#4</span><b>0xMOO...999</b><em>44 COWS</em></div>
+          <div><span>#5</span><b>YOU</b><em>13 COWS</em></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>MOO PUNKS • ROBINHOOD CHAIN • MOOFARM</footer>
+  </div>
+
+  <div id="cowModal" class="modal" aria-hidden="true">
+    <div class="panel modal-card">
+      <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+      <img id="modalImg" alt="MooPunk">
+      <h3 id="modalTitle">MooPunk</h3>
+      <b>10 MILK / DAY</b>
+      <p>This MooPunk lives on your farm and produces MILK every day.</p>
+    </div>
+  </div>
+
+  <script src="./app.js?v=3"></script>
+</body>
+</html>
